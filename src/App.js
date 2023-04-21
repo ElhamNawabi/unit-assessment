@@ -50,18 +50,23 @@ function App() {
 
   const [cartItems, setCartItems] = useState(lineItems);
 
+  const removeLineItem = (lineItemId) => {
+    const updatedCartItems = cartItems.filter((item) => item.id !== lineItemId);
+    setCartItems(updatedCartItems);
+  }
+
   return (
     <div className="App" >
       <h1 style={{ color: BLUE }}>Your Cart</h1>
       <div className="line-items-container"> 
-      {lineItems.map((lineItem) => {
+      {cartItems.map((lineItem) => {
         return <div key={lineItem.id} className="line-item">
           <img src = {lineItem.image} alt="line items" className="item-image"></img>
             <h3 className="line-name" style={{ color: BLUE }}> {lineItem.title} / {lineItem.quantity}x</h3>
             <div className="item-details">
             <p className="line-price">${lineItem.price}</p>
             <p className="line-delivery">Estimated Delivery Date: {ESTIMATED_DELIVERY}</p>
-            <p className="remove-item">Remove</p>
+            <p className="remove-item" onClick={() => removeLineItem(lineItem.id)}>Remove</p>
           </div>
         </div>
       })}
