@@ -42,14 +42,6 @@
   width: 50%;
 }
 
-.num-calc p {
-  margin: 0;
-}
-
-.text-calc p:last-child {
-  color: blue;
-}
-
 .App h1 {
   margin-left: 180px;
 }

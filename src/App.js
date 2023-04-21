@@ -1,4 +1,5 @@
-import ShoppingCart from './components/ShoppingCart';
+import React from "react";
+import { useState } from "react";
 import './App.css';
 
 // Styling variables
@@ -46,6 +47,9 @@ const TOTAL = 2382.3161;
 const ESTIMATED_DELIVERY = "Nov 24, 2021";
 
 function App() {
+
+  const [cartItems, setCartItems] = useState(lineItems);
+
   return (
     <div className="App" >
       <h1 style={{ color: BLUE }}>Your Cart</h1>
