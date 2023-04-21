@@ -56,11 +56,25 @@ function App() {
             <h3 className="line-name" style={{ color: BLUE }}> {lineItem.title} / {lineItem.quantity}x</h3>
             <div className="item-details">
             <p className="line-price">${lineItem.price}</p>
-            <p className="line-delivery">{ESTIMATED_DELIVERY}</p>
+            <p className="line-delivery">Estimated Delivery Date: {ESTIMATED_DELIVERY}</p>
             <p className="remove-item">Remove</p>
           </div>
         </div>
       })}
+      </div>
+      <div className="calc-container">
+        <div className="text-calc">
+          <p>Subtotal</p>
+          <p>Taxes (estimated)</p>
+          <p>Shipping</p>
+          <p style={{ color: BLUE }}>Total</p>
+        </div>
+        <div className="num-calc">
+          <p>{SUBTOTAL}</p>
+          <p>{HST}</p>
+          <p>Free</p>
+          <p>{TOTAL}</p>
+        </div>
       </div>
     </div>
   );
