@@ -55,6 +55,25 @@ function App() {
     setCartItems(updatedCartItems);
   }
 
+  function handleAddtoCartClick() {
+    const newLineItem = {
+      id: 4,
+      title: "Red Sofa",
+      price: 899.99,
+      quantity: 1,
+      image:
+      "https://www.cozey.ca/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0277%2F3057%2F5462%2Fproducts%2F2_Single_shot_DARK_GREY_OFF_OFF_SLOPE_17f0f115-11f8-4a78-b412-e9a2fea4748d.png%3Fv%3D1629310667&w=1920&q=75",
+      swatchColor: "#b0271d",
+      swatchTitle: "Red"
+    };
+    addLineItem(newLineItem);
+  }
+
+  function addLineItem(lineItem) {
+    setCartItems([...cartItems, lineItem]);
+    console.log(cartItems);
+  }
+
   return (
     <div className="App" >
       <h1 style={{ color: BLUE }}>Your Cart</h1>
@@ -66,7 +85,7 @@ function App() {
             <div className="item-details">
             <p className="line-price">${lineItem.price}</p>
             <p className="line-delivery">Estimated Delivery Date: {ESTIMATED_DELIVERY}</p>
-            <p className="remove-item" onClick={() => removeLineItem(lineItem.id)}>Remove</p>
+            <button className="remove-item" onClick={() => removeLineItem(lineItem.id)}>Remove</button>
           </div>
         </div>
       })}
@@ -77,6 +96,7 @@ function App() {
           <p>Taxes (estimated)</p>
           <p>Shipping</p>
           <p style={{ color: BLUE }}>Total</p>
+          <button onClick={handleAddtoCartClick}>Add Item to Cart</button>
         </div>
         <div className="num-calc">
           <p>${SUBTOTAL}</p>
