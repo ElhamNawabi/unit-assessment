@@ -1,0 +1,41 @@
+.line-items-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.line-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.item-image {
+  width: 250px;
+  height: auto;
+  margin-left: 160px;
+}
+
+.line-name {
+  margin-left: 50px;
+}
+
+/* .line-price {
+  margin-left: 950px;
+} */
+
+.item-details {
+  margin-left: 950px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .line-delivery {
+  margin-left: 950px;
+  display: flex;
+  flex-direction: column;
+} */
+
+.App h1 {
+  margin-left: 180px;
+}
+
