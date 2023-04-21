@@ -70,10 +70,10 @@ function App() {
           <p style={{ color: BLUE }}>Total</p>
         </div>
         <div className="num-calc">
-          <p>{SUBTOTAL}</p>
-          <p>{HST}</p>
+          <p>${SUBTOTAL}</p>
+          <p>${HST}</p>
           <p>Free</p>
-          <p>{TOTAL}</p>
+          <p>${TOTAL}</p>
         </div>
       </div>
     </div>
