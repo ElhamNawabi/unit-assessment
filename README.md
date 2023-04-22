@@ -1,6 +1,6 @@
 # How to run backend
 
-(doesn't work)
+(API doesn't work)
 cd to backend folder
 enter "node server.js" in terminal
 
