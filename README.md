@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# How to run backend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+(doesn't work)
+cd to backend folder
+enter "node server.js" in terminal
 
 ## Available Scripts
 
