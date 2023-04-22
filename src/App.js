@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './App.css';
 
 // Styling variables
@@ -49,6 +49,10 @@ const ESTIMATED_DELIVERY = "Nov 24, 2021";
 function App() {
 
   const [cartItems, setCartItems] = useState(lineItems);
+  const [subtotal, setSubtotal] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [shipping, setShipping] = useState(15);
+  const [total, setTotal] = useState(0);
 
   const removeLineItem = (lineItemId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== lineItemId);
@@ -72,6 +76,20 @@ function App() {
   function addLineItem(lineItem) {
     setCartItems([...cartItems, lineItem]);
     console.log(cartItems);
+  }
+
+  useEffect(() => {
+    calculateFees();
+  }, [cartItems, shipping]);
+
+  function calculateFees() {
+    let sub = 0;
+    for (let item of cartItems) {
+      sub += item.price;
+    }
+    setSubtotal(sub);
+    setTax(sub * 0.13);
+    setTotal(sub + sub * 0.13 + shipping);
   }
 
   return (
