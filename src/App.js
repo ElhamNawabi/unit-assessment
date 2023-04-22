@@ -41,9 +41,9 @@ const lineItems = [
   },
 ];
 
-const SUBTOTAL = 2094.97;
-const HST = 272.3461;
-const TOTAL = 2382.3161;
+// const SUBTOTAL = 2094.97;
+// const HST = 272.3461;
+// const TOTAL = 2382.3161;
 const ESTIMATED_DELIVERY = "Nov 24, 2021";
 
 function App() {
@@ -53,6 +53,20 @@ function App() {
   const [tax, setTax] = useState(0);
   const [shipping, setShipping] = useState(15);
   const [total, setTotal] = useState(0);
+
+  //Attempt at retrieving API
+
+  // const getLineItems = () => {
+  //   fetch('/api/line-items')
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     setCartItems(data.defaultLineItems)
+  //   })
+  // }
+
+  // useEffect(() => {
+  //   getLineItems();
+  // }, []);
 
   const removeLineItem = (lineItemId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== lineItemId);
@@ -79,18 +93,17 @@ function App() {
   }
 
   useEffect(() => {
+    function calculateFees() {
+      let sub = 0;
+      for (let item of cartItems) {
+        sub += item.price;
+      }
+      setSubtotal(sub);
+      setTax(sub * 0.13);
+      setTotal(sub + sub * 0.13 + shipping);
+    }
     calculateFees();
   }, [cartItems, shipping]);
-
-  function calculateFees() {
-    let sub = 0;
-    for (let item of cartItems) {
-      sub += item.price;
-    }
-    setSubtotal(sub);
-    setTax(sub * 0.13);
-    setTotal(sub + sub * 0.13 + shipping);
-  }
 
   return (
     <div className="App" >
@@ -117,10 +130,10 @@ function App() {
           <button onClick={handleAddtoCartClick}>Add Item to Cart</button>
         </div>
         <div className="num-calc">
-          <p>${SUBTOTAL}</p>
-          <p>${HST}</p>
+          <p>${subtotal.toFixed(2)}</p>
+          <p>${tax.toFixed(2)}</p>
           <p>Free</p>
-          <p>${TOTAL}</p>
+          <p>${total.toFixed(2)}</p>
         </div>
       </div>
     </div>
